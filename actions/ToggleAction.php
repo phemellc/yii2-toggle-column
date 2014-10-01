@@ -110,6 +110,9 @@ class ToggleAction extends Action
                 Yii::$app->session->setFlash('error', $this->flashError);
             }
         }
+        if (Yii::$app->request->getIsAjax()) {
+            Yii::$app->end();
+        }
         /* @var $controller \yii\web\Controller */
         $controller = $this->controller;
         if (!empty($this->redirect)) {
