@@ -74,8 +74,8 @@ class ToggleColumn extends DataColumn
 $("a.toggle-column").on("click", function(e) {
     e.preventDefault();
     $.post($(this).attr("href"), function(data) {
-        var pjaxId = $(e.target).closest(".grid-view").parent().attr("id");
-        $.pjax.reload({container:"#" + pjaxId});
+        var gridId = $(e.target).parents(".grid-view").attr("id");
+        $("#" + gridId).yiiGridView('applyFilter');
     });
     return false;
 });
