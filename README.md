@@ -45,6 +45,9 @@ public function actions()
 
 // In your view
 use yii\grid\GridView;
+use yii\widgets\Pjax;
+
+Pjax::begin();
 
 GridView::widget(
 	[
@@ -55,9 +58,13 @@ GridView::widget(
 			[
 				'class' => '\pheme\grid\ToggleColumn',
 				'attribute' => 'active',
+				// Uncomment if  you don't want AJAX
+				// 'enableAjax' => false,
 			],
 			['class' => 'yii\grid\ActionColumn'],
 		],
 	]
 );
+
+Pjax::end();
 ```
