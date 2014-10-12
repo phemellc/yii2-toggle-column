@@ -29,7 +29,7 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 // In your Controller
-use pheme\grid\ToggleAction;
+use pheme\grid\actions\ToggleAction;
 
 public function actions()
 {
