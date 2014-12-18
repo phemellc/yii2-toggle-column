@@ -70,7 +70,7 @@ class ToggleColumn extends DataColumn
      */
     public function registerJs()
     {
-        $js = <<< JS
+        $js = <<<'JS'
 $("a.toggle-column").on("click", function(e) {
     e.preventDefault();
     $.post($(this).attr("href"), function(data) {
