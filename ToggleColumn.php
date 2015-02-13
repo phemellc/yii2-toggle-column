@@ -41,7 +41,7 @@ class ToggleColumn extends DataColumn
      */
     protected function renderDataCellContent($model, $key, $index)
     {
-        $url = [$this->action, 'id' => $model->id];
+        $url = [$this->action, 'id' => $model->primaryKey];
 
         $attribute = $this->attribute;
         $value = $model->$attribute;
