@@ -23,6 +23,12 @@ class ToggleColumn extends DataColumn
      */
     public $action = 'toggle';
 
+
+    /**
+     * @var string pk field name
+     */
+    public $primaryKey = 'primaryKey';
+
     /**
      * Whether to use ajax or not
      * @var bool
@@ -41,7 +47,7 @@ class ToggleColumn extends DataColumn
      */
     protected function renderDataCellContent($model, $key, $index)
     {
-        $url = [$this->action, 'id' => $model->primaryKey];
+        $url = [$this->action, 'id' => $model->{$this->primaryKey}];
 
         $attribute = $this->attribute;
         $value = $model->$attribute;

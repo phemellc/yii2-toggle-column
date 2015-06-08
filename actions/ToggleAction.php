@@ -63,6 +63,11 @@ class ToggleAction extends Action
     public $redirect;
 
     /**
+     * @var string pk field name
+     */
+    public $primaryKey = 'id';
+
+    /**
      * Run the action
      * @param $id integer id of model to be loaded
      *
@@ -84,7 +89,7 @@ class ToggleAction extends Action
         /* @var $modelClass \yii\db\ActiveRecord */
         $modelClass = $this->modelClass;
         $attribute = $this->attribute;
-        $model = $modelClass::find()->where(['id' => $id]);
+        $model = $modelClass::find()->where([$this->primaryKey => $id]);
 
         if (!empty($this->andWhere)) {
             $model->andWhere($this->andWhere);
