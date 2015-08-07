@@ -28,6 +28,11 @@ class ToggleAction extends Action
     public $attribute = 'active';
 
     /**
+     * @var string scenario model
+     */
+    public $scenario = null;
+
+    /**
      * @var string|array additional condition for loading the model
      */
     public $andWhere;
@@ -88,6 +93,8 @@ class ToggleAction extends Action
         }
         /* @var $modelClass \yii\db\ActiveRecord */
         $modelClass = $this->modelClass;
+
+
         $attribute = $this->attribute;
         $model = $modelClass::find()->where([$this->primaryKey => $id]);
 
@@ -96,6 +103,7 @@ class ToggleAction extends Action
         }
 
         $model = $model->one();
+        if (!is_null($this->scenario)) $model->scenario = $this->scenario;
 
         if (!$model->hasAttribute($this->attribute)) {
             throw new InvalidConfigException("Attribute doesn't exist");
@@ -106,6 +114,7 @@ class ToggleAction extends Action
         } else {
             $model->$attribute = $this->onValue;
         }
+
         if ($model->save()) {
             if ($this->setFlash) {
                 Yii::$app->session->setFlash('success', $this->flashSuccess);
