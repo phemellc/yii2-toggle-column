@@ -10,6 +10,7 @@ namespace pheme\grid\actions;
 use Yii;
 use yii\base\Action;
 use yii\base\InvalidConfigException;
+use yii\db\Expression;
 use yii\web\MethodNotAllowedHttpException;
 
 /**
@@ -38,7 +39,7 @@ class ToggleAction extends Action
     public $andWhere;
 
     /**
-     * @var string|int|boolean what to set active models to
+     * @var string|int|boolean|Expression what to set active models to
      */
     public $onValue = 1;
 
@@ -110,6 +111,8 @@ class ToggleAction extends Action
         }
 
         if ($model->$attribute == $this->onValue) {
+            $model->$attribute = $this->offValue;
+        } elseif ($this->onValue instanceof Expression && $model->$attribute != $this->offValue) {
             $model->$attribute = $this->offValue;
         } else {
             $model->$attribute = $this->onValue;
