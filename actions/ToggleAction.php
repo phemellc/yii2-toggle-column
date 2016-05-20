@@ -104,7 +104,10 @@ class ToggleAction extends Action
         }
 
         $model = $model->one();
-        if (!is_null($this->scenario)) $model->scenario = $this->scenario;
+
+        if (!is_null($this->scenario)) {
+            $model->scenario = $this->scenario;
+        }
 
         if (!$model->hasAttribute($this->attribute)) {
             throw new InvalidConfigException("Attribute doesn't exist");
