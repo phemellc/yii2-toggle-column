@@ -35,8 +35,34 @@ class ToggleColumn extends DataColumn
      */
     public $enableAjax = true;
 
+    /**
+     * @var string glyphicon for 'on' value
+     */
+    public $iconOn = 'ok';
+
+    /**
+     * @var string glyphicon for 'off' value
+     */
+    public $iconOff = 'remove';
+
+    /**
+     * @var string text to display on the 'on' link
+     */
+    public $onText;
+
+    /**
+     * @var string text to display on the 'off' link
+     */
+    public $offText;
+
     public function init()
     {
+        if ($this->onText === null) {
+            $this->onText = Yii::t('app', 'On');
+        }
+        if ($this->offText === null) {
+            $this->offText = Yii::t('app', 'Off');
+        }
         if ($this->enableAjax) {
             $this->registerJs();
         }
@@ -53,11 +79,11 @@ class ToggleColumn extends DataColumn
         $value = $model->$attribute;
 
         if ($value === null || $value == true) {
-            $icon = 'ok';
-            $title = Yii::t('yii', 'Off');
+            $icon = $this->iconOn;
+            $title = $this->offText;
         } else {
-            $icon = 'remove';
-            $title = Yii::t('yii', 'On');
+            $icon = $this->iconOff;
+            $title = $this->onText;
         }
         return Html::a(
             '<span class="glyphicon glyphicon-' . $icon . '"></span>',
