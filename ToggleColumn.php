@@ -103,7 +103,7 @@ class ToggleColumn extends DataColumn
     public function registerJs()
     {
         $js = <<<'JS'
-$("a.toggle-column").on("click", function(e) {
+$(document.body).on("click", "a.toggle-column", function(e) {
     e.preventDefault();
     $.post($(this).attr("href"), function(data) {
         var pjaxId = $(e.target).closest("[data-pjax-container]").attr("id");
