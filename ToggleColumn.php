@@ -102,6 +102,9 @@ class ToggleColumn extends DataColumn
      */
     public function registerJs()
     {
+        if(Yii::$app->request->isAjax) {
+            return;
+        }
         $js = <<<'JS'
 $(document.body).on("click", "a.toggle-column", function(e) {
     e.preventDefault();
