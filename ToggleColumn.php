@@ -111,7 +111,7 @@ $(document.body).on("click", "a.toggle-column", function(e) {
     $.post($(this).attr("href"), function(data) {
         var container = $(e.target).closest("[data-pjax-container]");
         if (container.length === 0) {
-            container = $(e.target).closest(".grid-view");
+            container = $(e.target).closest(".grid-view").parent();
         }
         var pjaxId = container.attr("id");
         $.pjax.reload({container:"#" + pjaxId});
