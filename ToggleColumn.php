@@ -54,6 +54,22 @@ class ToggleColumn extends DataColumn
      * @var string text to display on the 'off' link
      */
     public $offText;
+    
+    /**
+     * @var string text to display next to the 'on' link
+     */
+    public $displayValueText = false;
+    
+    /**
+     * @var string text to display next to the 'on' link
+     */
+    public $onValueText;
+    
+    /**
+     * @var string text to display next to the 'off' link
+     */
+    public $offValueText;
+    
 
     public function init()
     {
@@ -62,6 +78,12 @@ class ToggleColumn extends DataColumn
         }
         if ($this->offText === null) {
             $this->offText = Yii::t('app', 'Off');
+        }
+        if ($this->onValueText === null) {
+            $this->onValueText = Yii::t('app', 'Active');
+        }
+        if ($this->offValueText === null) {
+            $this->offValueText = Yii::t('app', 'Inactive');
         }
         if ($this->enableAjax) {
             $this->registerJs();
@@ -81,9 +103,11 @@ class ToggleColumn extends DataColumn
         if ($value === null || $value == true) {
             $icon = $this->iconOn;
             $title = $this->offText;
+            $valueText = $this->onValueText;
         } else {
             $icon = $this->iconOff;
             $title = $this->onText;
+            $valueText = $this->offValueText;
         }
         return Html::a(
             '<span class="glyphicon glyphicon-' . $icon . '"></span>',
@@ -94,7 +118,7 @@ class ToggleColumn extends DataColumn
                 'data-method' => 'post',
                 'data-pjax' => '0',
             ]
-        );
+        ) . ( $this->displayValueText ? " {$valueText}" : "" );
     }
 
     /**
