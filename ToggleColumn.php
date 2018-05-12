@@ -69,6 +69,11 @@ class ToggleColumn extends DataColumn
      * @var string text to display next to the 'off' link
      */
     public $offValueText;
+
+    /**
+     * @var string attribute from model to control visible
+     */
+    public $hideAttribute;
     
 
     public function init()
@@ -109,16 +114,18 @@ class ToggleColumn extends DataColumn
             $title = $this->onText;
             $valueText = $this->offValueText;
         }
-        return Html::a(
-            '<span class="glyphicon glyphicon-' . $icon . '"></span>',
-            $url,
-            [
-                'title' => $title,
-                'class' => 'toggle-column',
-                'data-method' => 'post',
-                'data-pjax' => '0',
-            ]
-        ) . ( $this->displayValueText ? " {$valueText}" : "" );
+        if (!$model->{$this->hideAttribute}) {
+            return Html::a(
+                '<span class="glyphicon glyphicon-' . $icon . '"></span>',
+                $url,
+                [
+                    'title' => $title,
+                    'class' => 'toggle-column',
+                    'data-method' => 'post',
+                    'data-pjax' => '0',
+                ]
+            ) . ( $this->displayValueText ? " {$valueText}" : "" );
+        }
     }
 
     /**
