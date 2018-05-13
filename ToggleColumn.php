@@ -73,7 +73,7 @@ class ToggleColumn extends DataColumn
     /**
      * @var string attribute from model to control visible
      */
-    public $hideAttribute;
+    public $hideAttribute = false;
     
 
     public function init()
@@ -114,7 +114,7 @@ class ToggleColumn extends DataColumn
             $title = $this->onText;
             $valueText = $this->offValueText;
         }
-        if (!$model->{$this->hideAttribute}) {
+        if (!$this->hideAttribute || !$model->{$this->hideAttribute}) {
             return Html::a(
                 '<span class="glyphicon glyphicon-' . $icon . '"></span>',
                 $url,
