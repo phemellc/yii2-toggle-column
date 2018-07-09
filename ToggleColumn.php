@@ -109,6 +109,9 @@ class ToggleColumn extends DataColumn
             $title = $this->onText;
             $valueText = $this->offValueText;
         }
+        if ($valueText instanceof \Closure) {
+            $valueText = $valueText($model);
+        }
         return Html::a(
             '<span class="glyphicon glyphicon-' . $icon . '"></span>',
             $url,
