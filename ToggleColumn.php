@@ -138,9 +138,7 @@ $(document.body).on("click", "a.toggle-column", function(e) {
     $.post($(this).attr("href"), function(data) {
         var pjaxId = $(e.target).closest("[data-pjax-container]").attr("id");
         $.pjax.reload({container:"#" + pjaxId});
-    }).fail(function(f){
-        alert(f.responseText)
-        });;
+    });
     return false;
 });
 JS;
