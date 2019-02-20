@@ -5,7 +5,7 @@
  * @license MIT http://opensource.org/licenses/MIT
  */
 
-namespace pheme\grid;
+namespace naduvko\grid;
 
 use yii\grid\DataColumn;
 use yii\helpers\Html;
