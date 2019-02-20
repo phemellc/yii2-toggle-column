@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist pheme/yii2-toggle-column "*"
+php composer.phar require --prefer-dist naduvko/yii2-toggle-column "*"
 ```
 
 or add
 
 ```
-"pheme/yii2-toggle-column": "*"
+"naduvko/yii2-toggle-column": "*"
 ```
 
 to the require section of your `composer.json` file.
