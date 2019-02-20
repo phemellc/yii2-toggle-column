@@ -5,7 +5,7 @@
  * @license MIT http://opensource.org/licenses/MIT
  */
 
-namespace pheme\grid\actions;
+namespace naduvko\grid\actions;
 
 use Yii;
 use yii\base\Action;
