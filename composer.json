@@ -1,5 +1,5 @@
 {
-    "name": "pheme/yii2-toggle-column",
+    "name": "naduvko/yii2-toggle-column",
     "description": "Provides a toggle data column and action",
     "type": "yii2-extension",
     "keywords": [
@@ -9,10 +9,13 @@
         "column"
     ],
     "license": "MIT",
-    "authors": [
-        {
+    "authors": [{
             "name": "Aris Karageorgos",
             "email": "aris@phe.me"
+        },
+        {
+            "name": "Ivan Chivchibashiev",
+            "email": "naduvko@gmail.com"
         }
     ],
     "require": {
@@ -20,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "\\pheme\\grid\\": ""
+            "\\naduvko\\grid\\": ""
         }
     }
 }
