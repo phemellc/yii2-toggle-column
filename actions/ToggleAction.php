@@ -86,7 +86,6 @@ class ToggleAction extends Action
         if (!Yii::$app->request->getIsPost()) {
             throw new MethodNotAllowedHttpException();
         }
-        $id = (int)$id;
         $result = null;
 
         if (empty($this->modelClass) || !class_exists($this->modelClass)) {
