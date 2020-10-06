@@ -5,7 +5,7 @@
  * @license MIT http://opensource.org/licenses/MIT
  */
 
-namespace pheme\grid;
+namespace naduvko\grid;
 
 use yii\grid\DataColumn;
 use yii\helpers\Html;
@@ -109,6 +109,9 @@ class ToggleColumn extends DataColumn
             $title = $this->onText;
             $valueText = $this->offValueText;
         }
+        if ($valueText instanceof \Closure) {
+            $valueText = $valueText($model);
+        }
         return Html::a(
             '<span class="glyphicon glyphicon-' . $icon . '"></span>',
             $url,
@@ -135,7 +138,9 @@ $(document.body).on("click", "a.toggle-column", function(e) {
     $.post($(this).attr("href"), function(data) {
         var pjaxId = $(e.target).closest("[data-pjax-container]").attr("id");
         $.pjax.reload({container:"#" + pjaxId});
-    });
+    }).fail(function(f){
+        alert(f.responseText)
+        });
     return false;
 });
 JS;
