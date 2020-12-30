@@ -60,6 +60,8 @@ GridView::widget(
 				'attribute' => 'active',
 				// Uncomment if  you don't want AJAX
 				// 'enableAjax' => false,
+				// Uncomment if you want to hide it by some model's attribute
+				// 'hideAttribute' => 'is_toggle_hidden',
 			],
 			['class' => 'yii\grid\ActionColumn'],
 		],
