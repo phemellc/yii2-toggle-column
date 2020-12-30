@@ -133,7 +133,11 @@ class ToggleColumn extends DataColumn
 $(document.body).on("click", "a.toggle-column", function(e) {
     e.preventDefault();
     $.post($(this).attr("href"), function(data) {
-        var pjaxId = $(e.target).closest("[data-pjax-container]").attr("id");
+        var container = $(e.target).closest("[data-pjax-container]");
+        if (container.length === 0) {
+            container = $(e.target).closest(".grid-view").parent();
+        }
+        var pjaxId = container.attr("id");
         $.pjax.reload({container:"#" + pjaxId});
     });
     return false;
