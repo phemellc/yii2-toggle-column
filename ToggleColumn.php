@@ -36,14 +36,18 @@ class ToggleColumn extends DataColumn
     public $enableAjax = true;
 
     /**
+     * @var string icon prefix
+     */
+    public $cssPrefix = 'fas';
+    /**
      * @var string glyphicon for 'on' value
      */
-    public $iconOn = 'ok';
+    public $iconOn = 'fa-ok';
 
     /**
      * @var string glyphicon for 'off' value
      */
-    public $iconOff = 'remove';
+    public $iconOff = 'fa-remove';
 
     /**
      * @var string text to display on the 'on' link
@@ -113,7 +117,7 @@ class ToggleColumn extends DataColumn
             $valueText = $valueText($model);
         }
         return Html::a(
-            '<span class="glyphicon glyphicon-' . $icon . '"></span>',
+            '<i class="'.$cssPrefix." " . $icon . '"></i>',
             $url,
             [
                 'title' => $title,
