@@ -38,7 +38,11 @@ class ToggleColumn extends DataColumn
     /**
      * @var string icon prefix
      */
-    public $cssPrefix = 'fas';
+    public $cssPrefixOn = 'fas';
+    /**
+     * @var string icon prefix
+     */
+    public $cssPrefixOff = 'far';
     /**
      * @var string glyphicon for 'on' value
      */
@@ -108,10 +112,12 @@ class ToggleColumn extends DataColumn
             $icon = $this->iconOn;
             $title = $this->offText;
             $valueText = $this->onValueText;
+            $cssPrefix = $this->cssPrefixOn;
         } else {
             $icon = $this->iconOff;
             $title = $this->onText;
             $valueText = $this->offValueText;
+            $cssPrefix = $this->cssPrefixOff;
         }
         if ($valueText instanceof \Closure) {
             $valueText = $valueText($model);
